@@ -13,4 +13,11 @@
 
 ## Requirements
 
+* [Docker](https://docs.docker.com/get-docker/) Docker Engine
 * [MySQL](https://www.mysql.com) MySQL Database
+
+## Setup
+
+```bash
+./scripts/setup-dev.sh
+```
