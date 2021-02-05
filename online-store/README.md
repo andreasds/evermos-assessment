@@ -22,3 +22,8 @@
 ```bash
 ./scripts/setup-dev.sh
 ```
+
+From that script, we have:
+
+* Database run at port 17306 with root password `mysql-admin`
+* Backend run with API access port 18001
