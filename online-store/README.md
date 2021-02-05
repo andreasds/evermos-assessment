@@ -17,6 +17,7 @@
 * [MySQL](https://www.mysql.com) MySQL Database
 * [Python](https://www.python.org/downloads) Python programming language
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) Micro web framework
+* [MySQL Connector](https://dev.mysql.com/downloads/connector/python/) MySQL driver
 
 ## Setup
 

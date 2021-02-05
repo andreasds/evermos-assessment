@@ -2,6 +2,7 @@ import configparser
 
 from online_store.flaskr import FlaskApp
 from online_store.flaskr.home import home
+from online_store.helper.database import Database
 
 def run(args):
     """ Main application
@@ -13,8 +14,10 @@ def run(args):
     config = configparser.ConfigParser()
     config.read_file(open(args.conf))
 
-    # database config
+    # setup database
     dbConf = config['database']
+    db = Database()
+    db.setConfig(dbConf)
 
     # flask app
     app = FlaskApp()
