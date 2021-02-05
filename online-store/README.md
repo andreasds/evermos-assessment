@@ -16,6 +16,7 @@
 * [Docker](https://docs.docker.com/get-docker/) Docker Engine
 * [MySQL](https://www.mysql.com) MySQL Database
 * [Python](https://www.python.org/downloads) Python programming language
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/) Micro web framework
 
 ## Setup
 
@@ -27,3 +28,11 @@ From that script, we have:
 
 * Database run at port 17306 with root password `mysql-admin`
 * Backend run with API access port 18001
+
+## How to Run
+
+```bash
+./scripts/run.sh
+```
+
+* API Endpoint will run at http://localhost:18001/

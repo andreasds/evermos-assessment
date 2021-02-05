@@ -69,6 +69,11 @@ if [ ! $(docker ps -q -f name=$backend) ]; then
         bash
 fi
 
+# install python dependencies
+echo ''
+echo '### Installing python dependencies'
+docker exec $backend bash -c "pip install -r requirements.txt"
+
 # DONE
 echo ""
 echo "DONE."
