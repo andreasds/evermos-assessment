@@ -14,3 +14,15 @@ The user must navigate in a specific order:
 * Right / East `B` step(s), then
 * Down / South `C` step(s)
 * `A`, `B`, `C` > 0
+
+## How to run
+
+```bash
+./scripts/run.sh
+```
+
+## How to Run manually
+
+```bash
+python -m treasure_hunt
+```

@@ -28,6 +28,10 @@ fi
 # run application
 echo ""
 echo "Treasure Hunt result"
+docker exec \
+    -it \
+    $treasure_hunt \
+    python -m treasure_hunt
 
 # destroy container
 echo ""
