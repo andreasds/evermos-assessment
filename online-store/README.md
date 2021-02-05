@@ -10,3 +10,7 @@
 
 * Put a lock around the shared data to ensure only one thread can access
   the data at a time
+
+## Requirements
+
+* [MySQL](https://www.mysql.com) MySQL Database
