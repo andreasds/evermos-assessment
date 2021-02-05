@@ -36,3 +36,9 @@ From that script, we have:
 ```
 
 * API Endpoint will run at http://localhost:18001/
+
+## How to Run manually
+
+```bash
+python -m online_store --conf configs/online-store.conf
+```
