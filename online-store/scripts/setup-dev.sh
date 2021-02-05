@@ -2,9 +2,14 @@
 
 echo "Setting up development environment"
 
+root=$(pwd)
+
 db=online-store-db # db container name
 db_pwd=mysql-admin # db root password
 db_version=8.0.22 # db version
+
+backend=online-store-be # backend container name
+python_version=3.9.1-slim-buster # python version
 
 # setup mysql database
 echo ""
@@ -42,6 +47,27 @@ docker cp configs/db.sql $db:db.sql || \
 docker exec $db bash -c "cat db.sql | \
     mysql -u root -p$db_pwd"
 docker exec $db bash -c "rm db.sql"
+
+# setup python environtment
+echo ""
+echo "### Installing python"
+# docker stop $backend
+if [ ! $(docker ps -q -f name=$backend) ]; then
+    if [ $(docker ps -q -f status=exited -f name=$backend) ]; then
+        docker rm $backend
+    fi
+    docker run \
+        -d \
+        -it \
+        -v $root:/home/online-store \
+        -w /home/online-store \
+        --expose 5000 \
+        -p 18001:5000 \
+        --restart unless-stopped \
+        --name $backend \
+        python:$python_version \
+        bash
+fi
 
 # DONE
 echo ""

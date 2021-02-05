@@ -15,6 +15,7 @@
 
 * [Docker](https://docs.docker.com/get-docker/) Docker Engine
 * [MySQL](https://www.mysql.com) MySQL Database
+* [Python](https://www.python.org/downloads) Python programming language
 
 ## Setup
 
