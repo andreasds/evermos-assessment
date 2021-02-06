@@ -60,3 +60,21 @@ POST /customer/add
   "username": "customer1"
 }
 ```
+
+### Product
+
+* Get All Products, fetch all products
+
+```json
+GET /product/all
+```
+
+* Add Product, create new product
+
+```json
+POST /product/add
+{
+  "product_name": "product1",
+  "stock": 0
+}
+```
