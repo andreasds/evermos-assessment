@@ -11,7 +11,15 @@ class Customer(object):
 class Customers(object):
 
     @staticmethod
-    def addCustomer(customer):
+    def add_customer(customer):
+        """ Add new customer into database
+
+        Args:
+            customer (Customer): new customer
+
+        Returns:
+            flask.Response: failed response
+        """
         query = """
             INSERT INTO customers ( id, username )
             SELECT * FROM ( SELECT %s, %s ) AS tmp

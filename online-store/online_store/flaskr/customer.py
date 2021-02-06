@@ -4,7 +4,7 @@ from online_store.model.customers import Customer, Customers
 from online_store.helper.request import is_request_data_exists
 from online_store.helper.response import failed_response, success_response
 
-def addCustomer():
+def add_customer():
     """ Add new customer
 
     Returns:
@@ -25,7 +25,7 @@ def addCustomer():
     )
 
     # add to database
-    if (failed := Customers.addCustomer(customer)) is not None:
+    if (failed := Customers.add_customer(customer)) is not None:
         # failed save to database
         return failed
 

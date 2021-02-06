@@ -57,6 +57,6 @@ python -m online_store --conf configs/online-store.conf
 ```json
 POST /customer/add
 {
-  "username": "customertest"
+  "username": "customer1"
 }
 ```
