@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS customers (
 -- create products
 CREATE TABLE IF NOT EXISTS products (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    product_name VARCHAR(100) NOT NULL UNIQUE,
+    product_name VARCHAR(100) NOT NULL,
     stock INT NOT NULL DEFAULT 0
 );
 
