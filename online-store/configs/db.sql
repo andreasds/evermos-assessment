@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS carts (
     product_id INT NOT NULL,
     quantity INT NOT NULL,
     CONSTRAINT fk_cart_customer FOREIGN KEY (customer_id) REFERENCES customers(id),
-    CONSTRAINT fk_cart_product FOREIGN KEY (product_id) REFERENCES products(id)
+    CONSTRAINT fk_cart_product FOREIGN KEY (product_id) REFERENCES products(id),
+    PRIMARY KEY (customer_id, product_id)
 );
 
 -- create orders
@@ -52,5 +53,6 @@ CREATE TABLE IF NOT EXISTS order_products (
     product_id INT NOT NULL,
     quantity INT NOT NULL,
     CONSTRAINT fk_order_product_order FOREIGN KEY (order_id) REFERENCES orders(id),
-    CONSTRAINT fk_order_product_product FOREIGN KEY (product_id) REFERENCES products(id)
+    CONSTRAINT fk_order_product_product FOREIGN KEY (product_id) REFERENCES products(id),
+    PRIMARY KEY (order_id, product_id)
 );
