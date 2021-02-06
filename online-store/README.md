@@ -78,3 +78,22 @@ POST /product/add
   "stock": 0
 }
 ```
+
+### Cart
+
+* Get Cart, collect all products in customer cart
+
+```json
+GET /cart/<customer_id>
+```
+
+* Add Cart, add product into customer cart
+
+```json
+POST /cart/add
+{
+  "customer_id": 1,
+  "product_id": 1,
+  "quantity": 1
+}
+```

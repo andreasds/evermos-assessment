@@ -29,7 +29,7 @@ class Products(object):
 
         result, failed = Database().fetchQuery(query, values)
         if failed is not None:
-            # failed save to database
+            # failed fetch from database
             return [], failed
 
         result = [ {
