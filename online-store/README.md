@@ -43,3 +43,20 @@ From that script, we have:
 ```bash
 python -m online_store --conf configs/online-store.conf
 ```
+
+## Postman Collection
+
+* [Postman Collection](configs/evermos_postman.json)
+
+## API Endpoint
+
+### Customer
+
+* Add Customer, create new customer
+
+```json
+POST /customer/add
+{
+  "username": "customertest"
+}
+```
