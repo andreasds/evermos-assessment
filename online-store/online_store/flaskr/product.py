@@ -51,3 +51,34 @@ def add_product():
         'Product has been successfully created',
         None,
     )
+
+def add_stock_product():
+    """ Add stock product
+
+    Returns:
+        flask.Response: success or failed response
+    """
+    data = request.json
+
+    if (failed := is_request_data_exists(
+        data,
+        [ 'product_id', 'stock' ],
+    )) is not None:
+        # request data is null
+        return failed
+
+    # update product stock
+    product = Product(
+        id = data['product_id'],
+        stock = data['stock'],
+    )
+
+    # update database
+    if (failed := Products.add_stock_product(product)) is not None:
+        # failed to update database
+        return failed
+
+    return success_response(
+        'Product stock has been successfully updated',
+        None,
+    )

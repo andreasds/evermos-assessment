@@ -79,6 +79,16 @@ POST /product/add
 }
 ```
 
+* Update Product Stock, update product stock
+
+```json
+POST /product/add-stock
+{
+  "product_id": "product1",
+  "stock": 10
+}
+```
+
 ### Cart
 
 * Get Cart, collect all products in customer cart

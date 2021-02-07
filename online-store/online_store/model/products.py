@@ -74,3 +74,71 @@ class Products(object):
         product.id = id
 
         return None
+
+    @staticmethod
+    def add_stock_product(product):
+        """ Add stock with new quantity
+
+        Args:
+            product (Product): new product stock
+
+        Returns:
+            flask.Response: failed response
+        """
+        query = """
+            UPDATE products
+            SET stock = stock + %s
+            WHERE id = %s
+            """
+        values = (
+            product.stock, product.id,
+        )
+
+        result, failed = Database().storeQuery(query, values)
+        if failed is not None:
+            # failed update in database
+            return failed
+
+        affectedRow = result['rowcount']
+        if affectedRow == 0:
+            # something error
+            return failed_response(
+                HTTPStatus.INTERNAL_SERVER_ERROR,
+                'ERROR updating stock product',
+            )
+
+        return None
+
+    @staticmethod
+    def sell_product(product):
+        """ Substract stock with ordered quantity
+
+        Args:
+            product (Product): ordered product
+
+        Returns:
+            flask.Response: failed response
+        """
+        query = """
+            UPDATE products
+            SET stock = stock - %s
+            WHERE id = %s
+            """
+        values = (
+            product.stock, product.id,
+        )
+
+        result, failed = Database().storeQuery(query, values)
+        if failed is not None:
+            # failed update in database
+            return failed
+
+        affectedRow = result['rowcount']
+        if affectedRow == 0:
+            # something error
+            return failed_response(
+                HTTPStatus.INTERNAL_SERVER_ERROR,
+                'ERROR updating stock product',
+            )
+
+        return None

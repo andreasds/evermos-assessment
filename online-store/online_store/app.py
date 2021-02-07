@@ -4,7 +4,7 @@ from online_store.flaskr import FlaskApp
 from online_store.flaskr.cart import add_cart, get_cart
 from online_store.flaskr.customer import add_customer
 from online_store.flaskr.home import home
-from online_store.flaskr.product import add_product, get_all_product
+from online_store.flaskr.product import add_product, add_stock_product, get_all_product
 from online_store.helper.database import Database
 
 def run(args):
@@ -32,6 +32,7 @@ def run(args):
 
     app.add_endpoint('/product/all', 'getProducts', get_all_product, ['GET'])
     app.add_endpoint('/product/add', 'addProduct', add_product, ['POST'])
+    app.add_endpoint('/product/add-stock', 'addStockProduct', add_stock_product, ['POST'])
 
     app.add_endpoint('/cart/<int:customer_id>', 'getCart', get_cart, ['GET'])
     app.add_endpoint('/cart/add', 'addCart', add_cart, ['POST'])
