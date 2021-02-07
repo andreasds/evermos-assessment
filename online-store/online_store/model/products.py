@@ -41,6 +41,41 @@ class Products(object):
         return result, failed
 
     @staticmethod
+    def get_product(product_id):
+        """ Get product detail
+
+        Returns:
+            (tuple):
+                - (array): query result
+                - (flask.Response): failed response
+        """
+        query = """
+            SELECT id, product_name, stock
+            FROM products
+            WHERE id = %s
+            """
+        values = ( product_id, )
+
+        result, failed = Database().fetchQuery(query, values)
+        if failed is not None:
+            # failed fetch from database
+            return [], failed
+
+        if len(result) == 0:
+            return 0, failed_response(
+                HTTPStatus.INTERNAL_SERVER_ERROR,
+                'ERROR product not found',
+            )
+
+        result = {
+            'id': result[0][0],
+            'product_name': result[0][1],
+            'stock': result[0][2],
+        }
+
+        return result, failed
+
+    @staticmethod
     def add_product(product):
         """ Add new product into database
 

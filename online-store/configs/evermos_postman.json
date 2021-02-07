@@ -28,6 +28,25 @@
 					"response": []
 				},
 				{
+					"name": "Get Product Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ip}}:{{port}}/product/6",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"product",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Add Product",
 					"request": {
 						"method": "POST",
@@ -224,6 +243,26 @@
 							"path": [
 								"order",
 								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ordered Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ip}}:{{port}}/order/product/6",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"order",
+								"product",
+								"6"
 							]
 						}
 					},

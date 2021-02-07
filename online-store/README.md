@@ -69,6 +69,12 @@ POST /customer/add
 GET /product/all
 ```
 
+* Get Product, collect product detail
+
+```json
+GET /product/<product_id>
+```
+
 * Add Product, create new product
 
 ```json
@@ -127,4 +133,10 @@ POST /order/add
 {
   "customer_id": 1
 }
+```
+
+* Get Total Product Order, get total product quantity ordered
+
+```json
+GET /order/product/<product_id>
 ```

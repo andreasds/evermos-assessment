@@ -124,3 +124,20 @@ def add_order():
         'Order has been successfully updated',
         None,
     )
+
+def get_product_ordered(product_id):
+    """ Get total count product ordered
+
+    Returns:
+        flask.Response: success or failed response
+    """
+    # fetch total product ordered
+    result, failed = OrderProducts.get_product_ordered(product_id)
+    if failed is not None:
+        # failed to fetch from database
+        return failed
+
+    return success_response(
+        'Order detail has been successfully fetched',
+        result,
+    )

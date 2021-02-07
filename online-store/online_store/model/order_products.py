@@ -36,3 +36,34 @@ class OrderProducts(object):
             return failed
 
         return None
+
+    @staticmethod
+    def get_product_ordered(product_id):
+        """ Get total product ordered
+
+        Args:
+            order_product (OrderProduct): product id
+
+        Returns:
+            flask.Response: failed response
+        """
+        query = """
+            SELECT SUM(quantity) AS total
+            FROM order_products
+            WHERE product_id = %s
+            GROUP BY product_id
+            """
+        values = ( product_id, )
+
+        result, failed = Database().fetchQuery(query, values)
+        if failed is not None:
+            # failed fetch from database
+            return [], failed
+
+        if len(result) == 0:
+            return 0, failed_response(
+                HTTPStatus.INTERNAL_SERVER_ERROR,
+                'ERROR product not found in order',
+            )
+
+        return int(result[0][0]), failed

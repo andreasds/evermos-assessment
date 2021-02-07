@@ -15,35 +15,6 @@ class Order(object):
 class Orders(object):
 
     @staticmethod
-    def get_order(order_number):
-        """ Get detail order
-
-        Returns:
-            (tuple):
-                - (array): query result
-                - (flask.Response): failed response
-        """
-        query = """
-            SELECT id, product_name, stock
-            FROM products
-            ORDER BY product_name ASC
-            """
-        values = ()
-
-        result, failed = Database().fetchQuery(query, values)
-        if failed is not None:
-            # failed fetch from database
-            return [], failed
-
-        result = [ {
-                'id': product[0],
-                'product_name': product[1],
-                'stock': product[2],
-            } for product in result ]
-
-        return result, failed
-
-    @staticmethod
     def add_order(order):
         """ Add new order into database
 

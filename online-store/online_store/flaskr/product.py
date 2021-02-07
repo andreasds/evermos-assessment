@@ -1,3 +1,5 @@
+import json
+
 from flask import request
 from http import HTTPStatus
 from online_store.model.products import Product, Products
@@ -12,6 +14,23 @@ def get_all_product():
     """
     # fetch all products from database
     result, failed = Products.get_products()
+    if failed is not None:
+        # failed to fetch from database
+        return failed
+
+    return success_response(
+        'Product has been successfully fetched',
+        result,
+    )
+
+def get_product(product_id):
+    """ Collect product detail
+
+    Returns:
+        flask.Response: success or failed response
+    """
+    # fetch all products from database
+    result, failed = Products.get_product(product_id)
     if failed is not None:
         # failed to fetch from database
         return failed
@@ -49,7 +68,7 @@ def add_product():
 
     return success_response(
         'Product has been successfully created',
-        None,
+        json.dumps(product.__dict__),
     )
 
 def add_stock_product():

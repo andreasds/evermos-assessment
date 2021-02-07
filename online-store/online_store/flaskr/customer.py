@@ -1,3 +1,5 @@
+import json
+
 from flask import request
 from http import HTTPStatus
 from online_store.model.customers import Customer, Customers
@@ -31,5 +33,5 @@ def add_customer():
 
     return success_response(
         'Customer has been successfully created',
-        None,
+        json.dumps(customer.__dict__),
     )
