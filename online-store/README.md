@@ -44,6 +44,18 @@ From that script, we have:
 python -m online_store --conf configs/online-store.conf
 ```
 
+## How to Test
+
+```bash
+./scripts/test.sh
+```
+
+## How to Run manually
+
+```bash
+python -m test.event1212
+```
+
 ## Postman Collection
 
 * [Postman Collection](configs/evermos_postman.json)
