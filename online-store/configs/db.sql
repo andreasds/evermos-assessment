@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS carts (
 -- create orders
 CREATE TABLE IF NOT EXISTS orders (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    order_number VARCHAR(20) NOT NULL,
+    order_number VARCHAR(50) NOT NULL,
     customer_id INT NOT NULL,
     issued_date TIMESTAMP NOT NULL,
     order_status TINYINT NOT NULL DEFAULT 1, -- 0 = PAID, 1 = WAITING, 2 = CANCELLED
