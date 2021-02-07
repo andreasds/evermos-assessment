@@ -4,6 +4,7 @@ from http import HTTPStatus
 from mysql.connector import Error
 from online_store.helper.response import failed_response
 from online_store.helper.singleton import Singleton
+from threading import Lock
 
 class Database(metaclass=Singleton):
 
@@ -11,6 +12,7 @@ class Database(metaclass=Singleton):
         """ Database singleton class
         """
         self.__ready = False
+        self.stock_lock = Lock()
 
     def setConfig(self, dbConf):
         """ Config database

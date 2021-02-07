@@ -117,3 +117,14 @@ POST /cart/remove
   "product_id": 1
 }
 ```
+
+### Order
+
+* Add Order, order all product in cart
+
+```json
+POST /order/add
+{
+  "customer_id": 1
+}
+```
