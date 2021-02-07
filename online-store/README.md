@@ -107,3 +107,13 @@ POST /cart/add
   "quantity": 1
 }
 ```
+
+* Remove Product Cart, remove product in customer cart
+
+```json
+POST /cart/remove
+{
+  "customer_id": 1,
+  "product_id": 1
+}
+```

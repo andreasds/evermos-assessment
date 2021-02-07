@@ -52,3 +52,34 @@ def add_cart():
         'Cart has been successfully updated',
         None,
     )
+
+def remove_cart():
+    """ Remove product in customer cart
+
+    Returns:
+        flask.Response: success or failed response
+    """
+    data = request.json
+
+    if (failed := is_request_data_exists(
+        data,
+        [ 'customer_id', 'product_id' ],
+    )) is not None:
+        # request data is null
+        return failed
+
+    # removed cart
+    cart = Cart(
+        customer_id = data['customer_id'],
+        product_id = data['product_id'],
+    )
+
+    # remove product in cart
+    if (failed := Carts.remove_cart(cart)) is not None:
+        # failed to remove
+        return failed
+
+    return success_response(
+        'Product in cart has been successfully removed',
+        None,
+    )

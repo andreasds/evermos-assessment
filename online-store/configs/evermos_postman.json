@@ -6,6 +6,86 @@
 	},
 	"item": [
 		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ip}}:{{port}}/product/all",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"product",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_name\": \"product1\",\n    \"stock\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ip}}:{{port}}/product/add",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Stock Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\": 1,\n    \"stock\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ip}}:{{port}}/product/add-stock",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"product",
+								"add-stock"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Customer",
 			"item": [
 				{
@@ -70,6 +150,34 @@
 					"response": []
 				},
 				{
+					"name": "Remove Cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\": 1,\n    \"product_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ip}}:{{port}}/cart/remove",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"cart",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Cart",
 					"request": {
 						"method": "GET",
@@ -91,35 +199,16 @@
 			]
 		},
 		{
-			"name": "Product",
+			"name": "Order",
 			"item": [
 				{
-					"name": "Get All Products",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{ip}}:{{port}}/product/all",
-							"host": [
-								"{{ip}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"product",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Product",
+					"name": "Add Order",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"product_name\": \"product1\",\n    \"stock\": 0\n}",
+							"raw": "{\n    \"customer_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -127,13 +216,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{ip}}:{{port}}/product/add",
+							"raw": "{{ip}}:{{port}}/order/add",
 							"host": [
 								"{{ip}}"
 							],
 							"port": "{{port}}",
 							"path": [
-								"product",
+								"order",
 								"add"
 							]
 						}

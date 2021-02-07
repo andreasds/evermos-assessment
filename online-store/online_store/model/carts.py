@@ -26,8 +26,9 @@ class Carts(object):
                 IF ( quantity <= stock, 0, 1 ) AS out_of_stock
             FROM carts
             LEFT JOIN products ON products.id = carts.product_id
+            WHERE carts.customer_id = %s
             """
-        values = ()
+        values = ( customer_id, )
 
         result, failed = Database().fetchQuery(query, values)
         if failed is not None:
@@ -59,6 +60,31 @@ class Carts(object):
             """
         values = (
             cart.customer_id, cart.product_id, cart.quantity,
+        )
+
+        _, failed = Database().storeQuery(query, values)
+        if failed is not None:
+            # failed save to database
+            return failed
+
+        return None
+
+    @staticmethod
+    def remove_cart(cart):
+        """ Remove product in customer cart
+
+        Args:
+            cart (Cart): removed cart
+
+        Returns:
+            flask.Response: failed response
+        """
+        query = """
+            DELETE FROM carts
+            WHERE customer_id = %s AND product_id = %s
+            """
+        values = (
+            cart.customer_id, cart.product_id,
         )
 
         _, failed = Database().storeQuery(query, values)
